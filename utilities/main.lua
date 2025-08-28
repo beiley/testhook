@@ -272,61 +272,6 @@ function Main.settings_section(window, ui_keybind, custom_mouse)
     local options_tab = window:AddTab("Options")
     local menu_box = options_tab:AddLeftGroupbox("Menu") 
     
-    local ui_toggle = menu_box:AddToggle("UI_Enabled", {
-        Text = "UI Enabled",
-        Default = true,
-        Callback = function(value)
-            window:SetEnabled(value)
-        end
-    })
-    
-    if ui_keybind then
-        ui_toggle:AddKeyPicker("UI_Keybind", {
-            Default = ui_keybind,
-            Text = "UI Toggle",
-            Mode = "Toggle",
-        })
-    end
-
-    menu_box:AddColorPicker("UI_Color", {
-        Title = "UI Color",
-        Default = Color3.fromRGB(0, 85, 255),
-        Callback = function(value)
-            if Testhook.Library then
-                Testhook.Library.AccentColor = value
-                Testhook.Library:UpdateColorsUsingRegistry()
-            end
-        end
-    })
-
-    menu_box:AddToggle("UI_Watermark", {
-        Text = "Watermark",
-        Default = true,
-        Callback = function(value)
-            if Testhook.Library then
-                Testhook.Library:SetWatermarkVisibility(value)
-            end
-        end
-    })
-
-    menu_box:AddToggle("UI_Keybinds", {
-        Text = "Keybind List",
-        Default = false,
-        Callback = function(value)
-            if Testhook.Library.KeybindFrame then
-                Testhook.Library.KeybindFrame.Visible = value
-            end
-        end
-    })
-
-    if custom_mouse ~= nil then
-        menu_box:AddToggle("Mouse_Enabled", {
-            Text = "Custom Mouse",
-            Default = custom_mouse
-        })
-    end
-
-    menu_box:AddDivider()
     menu_box:AddButton("Rejoin", Main.rejoin)
     menu_box:AddButton("Server Hop", Main.server_hop)
     menu_box:AddButton("Copy Lua Invite", function()
@@ -338,38 +283,7 @@ function Main.settings_section(window, ui_keybind, custom_mouse)
         Testhook.Library:Notify("Copied JS invite to clipboard!", 3)
     end)
 
-    local background_box = options_tab:AddRightGroupbox("Background")
-    
-    if window.BackgroundFrame then
-        background_box:AddColorPicker("Background_Color", {
-            Title = "Background Color",
-            Default = Color3.new(1, 1, 1),
-            Transparency = 0,
-            Callback = function(value, transparency)
-                window.BackgroundFrame.ImageColor3 = value
-                window.BackgroundFrame.ImageTransparency = transparency
-            end
-        })
-    end
-
-    background_box:AddDropdown("Background_Image", {
-        Text = "Background Image",
-        Values = backgrounds_list,
-        Default = 1,
-        Callback = function(value)
-            if window.BackgroundFrame then
-                for _, data in pairs(backgrounds) do
-                    if data[1] == value then
-                        window.BackgroundFrame.Image = data[2]
-                        break
-                    end
-                end
-            end
-        end
-    })
-
     local crosshair_box = options_tab:AddRightGroupbox("Crosshair")
-    
     local crosshair_toggle = crosshair_box:AddToggle("Crosshair_Enabled", {
         Text = "Enabled",
         Default = false
