@@ -215,7 +215,7 @@ SilentFOV:AddSlider("silent_fov_thick",{Text="Thickness",Min=1,Max=10,Default=2,
 
 local TriggerBox = CombatTab:AddRightGroupbox("Trigger")
 local t_trigger = TriggerBox:AddToggle("trigger_on",{Text="Enabled",Default=false})
-t_trigger:AddKeyPicker("trigger_key",{Default="MouseButton2",Text="Trigger Key",Mode="Hold",Callback=function(isDown) trigger_down = Toggles.trigger_on.Value and isDown end})
+t_trigger:AddKeyPicker("trigger_key",{Default="MB2",Text="Trigger Key",Mode="Hold",Callback=function(isDown) trigger_down = Toggles.trigger_on.Value and isDown end})
 TriggerBox:AddToggle("trigger_always",{Text="Always Enabled",Default=false})
 TriggerBox:AddToggle("trigger_hold",{Text="Hold Mouse Button",Default=false})
 TriggerBox:AddToggle("trigger_pred",{Text="Prediction",Default=false})
