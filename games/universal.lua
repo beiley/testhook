@@ -236,8 +236,17 @@ EspMain:AddToggle("player_esp/TeamColor", {Text="Use Team Color", Default=true})
 EspMain:AddToggle("player_esp/DistanceCheck", {Text="Distance Check", Default=false})
 EspMain:AddSlider("player_esp/Distance", {Text="Max Distance", Min=25, Max=5000, Default=1000, Rounding=0, Suffix=" studs"})
 
-EspMain:AddColorPicker("player_esp/Ally",  {Title="Ally Color",  Default=Color3.fromRGB(85,170,255), Transparency=0.0})
-EspMain:AddColorPicker("player_esp/Enemy", {Title="Enemy Color", Default=Color3.fromRGB(255,170,255), Transparency=0.0})
+local ally_lbl  = EspMain:AddLabel("Ally Color")
+ally_lbl:AddColorPicker("player_esp/Ally", {
+    Default = Color3.fromRGB(85,170,255),
+    Transparency = 0
+})
+
+local enemy_lbl = EspMain:AddLabel("Enemy Color")
+enemy_lbl:AddColorPicker("player_esp/Enemy", {
+    Default = Color3.fromRGB(255,170,255),
+    Transparency = 0
+})
 
 local BoxGb = EspTab:AddLeftGroupbox("Box")
 BoxGb:AddToggle("player_esp/Box/Enabled", {Text="Enabled", Default=true})
