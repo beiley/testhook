@@ -177,7 +177,11 @@ AimbotBox:AddDropdown("aimbot_parts",{Text="Body Parts",Values=known_body_parts,
 local AimbotFOV = CombatTab:AddLeftGroupbox("Aimbot FOV Circle")
 AimbotFOV:AddToggle("aimbot_fov_on",{Text="Enabled",Default=true})
 AimbotFOV:AddToggle("aimbot_fov_fill",{Text="Filled",Default=false})
-AimbotFOV:AddColorPicker("aimbot_fov_color",{Title="Color",Default=Color3.fromRGB(255,170,255),Transparency=0.25})
+local AimbotFovColor = AimbotFOV:AddLabel("Color")
+AimbotFovColor:AddColorPicker("aimbot_fov_color", {
+    Default = Color3.fromRGB(255, 170, 255),
+    Transparency = 0.25
+})
 AimbotFOV:AddSlider("aimbot_fov_sides",{Text="Num Sides",Min=3,Max=100,Default=14,Rounding=0})
 AimbotFOV:AddSlider("aimbot_fov_thick",{Text="Thickness",Min=1,Max=10,Default=2,Rounding=0})
 
@@ -201,7 +205,11 @@ SilentBox:AddDropdown("silent_parts",{Text="Body Parts",Values=known_body_parts,
 local SilentFOV = CombatTab:AddRightGroupbox("Silent Aim FOV Circle")
 SilentFOV:AddToggle("silent_fov_on",{Text="Enabled",Default=true})
 SilentFOV:AddToggle("silent_fov_fill",{Text="Filled",Default=false})
-SilentFOV:AddColorPicker("silent_fov_color",{Title="Color",Default=Color3.fromRGB(170,170,255),Transparency=0.25})
+local SilentFovColor = SilentFOV:AddLabel("Color")
+SilentFovColor:AddColorPicker("silent_fov_color", {
+    Default = Color3.fromRGB(170, 170, 255),
+    Transparency = 0.25
+})
 SilentFOV:AddSlider("silent_fov_sides",{Text="Num Sides",Min=3,Max=100,Default=14,Rounding=0})
 SilentFOV:AddSlider("silent_fov_thick",{Text="Thickness",Min=1,Max=10,Default=2,Rounding=0})
 
@@ -223,7 +231,11 @@ TriggerBox:AddDropdown("trigger_parts",{Text="Body Parts",Values=known_body_part
 local TriggerFOV = CombatTab:AddRightGroupbox("Trigger FOV Circle")
 TriggerFOV:AddToggle("trigger_fov_on",{Text="Enabled",Default=true})
 TriggerFOV:AddToggle("trigger_fov_fill",{Text="Filled",Default=false})
-TriggerFOV:AddColorPicker("trigger_fov_color",{Title="Color",Default=Color3.fromRGB(21,170,255),Transparency=0.25})
+local TriggerFovColor = TriggerFOV:AddLabel("Color")
+TriggerFovColor:AddColorPicker("trigger_fov_color", {
+    Default = Color3.fromRGB(21, 170, 255),
+    Transparency = 0.25
+})
 TriggerFOV:AddSlider("trigger_fov_sides",{Text="Num Sides",Min=3,Max=100,Default=14,Rounding=0})
 TriggerFOV:AddSlider("trigger_fov_thick",{Text="Thickness",Min=1,Max=10,Default=2,Rounding=0})
 
