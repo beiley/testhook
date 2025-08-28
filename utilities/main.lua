@@ -407,12 +407,11 @@ function Main.settings_section(window, ui_keybind, custom_mouse)
     discord_box:AddButton("Join Through Discord App", Main.join_discord)
 
     local credits_box = options_tab:AddRightGroupbox("Credits")
-    credits_box:AddLabel("Made by [Your Name]")
-    credits_box:AddLabel("Based on Parvus Framework")
+    credits_box:AddLabel("Made by W6ze")
     credits_box:AddDivider()
     credits_box:AddLabel("Special thanks to:")
-    credits_box:AddLabel("AlexR32 - Original Parvus")
-    credits_box:AddLabel("Anbubu1 - Parvus Fixed") 
+    credits_box:AddLabel("s1... hes the homie")
+    credits_box:AddLabel("m4chris - the goat") 
     credits_box:AddLabel("❤️ Contributors ❤️")
 
     return options_tab
