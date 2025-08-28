@@ -330,7 +330,7 @@ Testhook.Main.init_watermark()
 Testhook.Main.setup_lighting(Options)
 
 if Testhook.Drawing then
-    Testhook.Drawing.SetupCursor(Window)
+    --Testhook.Drawing.SetupCursor(Window)
     Testhook.Drawing.SetupCrosshair(Options)
     Testhook.Drawing.SetupFOV("aimbot", Options)
     Testhook.Drawing.SetupFOV("silent", Options)
