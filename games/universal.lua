@@ -78,7 +78,7 @@ local function select_body_parts(priority, parts_map)
 end
 
 local function body_parts_from_option(opt_table)
-    -- Linoria Multi dropdown stores selected values as a map: { ["Head"]=true, ... }
+    -- linoria multi dropdown stores selected values as a map lmfao { ["Head"]=true, ... }
     local out = {}
     for k,v in pairs(opt_table or {}) do
         if v then out[k] = true end
@@ -162,7 +162,7 @@ PredBox:AddSlider("prediction_grav_corr",{Text="Gravity Correction",Min=1,Max=5,
 
 local AimbotBox = CombatTab:AddLeftGroupbox("Aimbot")
 local t_aimbot = AimbotBox:AddToggle("aimbot_enabled",{Text="Enabled",Default=false})
-t_aimbot:AddKeyPicker("aimbot_key",{Default="MouseButton2",Text="Aimbot Key",Mode="Hold",Callback=function(isDown) aimbot_down = Toggles.aimbot_enabled.Value and isDown end})
+t_aimbot:AddKeyPicker("aimbot_key",{Default="MB2",Text="Aimbot Key",Mode="Hold",Callback=function(isDown) aimbot_down = Toggles.aimbot_enabled.Value and isDown end})
 AimbotBox:AddToggle("aimbot_always",{Text="Always Enabled",Default=false})
 AimbotBox:AddToggle("aimbot_pred",{Text="Prediction",Default=false})
 AimbotBox:AddToggle("aimbot_team",{Text="Team Check",Default=false})
@@ -187,7 +187,7 @@ SilentBox:AddDropdown("silent_modes",{Text="Mode",Values={
     "ViewportPointToRay","ScreenPointToRay","FindPartOnRay","Raycast","Target","Hit"
 },Multi=true,Default={"Target","Hit"}})
 local t_silent = SilentBox:AddToggle("silent_on",{Text="Enabled",Default=false})
-t_silent:AddKeyPicker("silent_key",{Default="MouseButton1",Text="Silent Aim Key",Mode="Toggle"})
+t_silent:AddKeyPicker("silent_key",{Default="MB1",Text="Silent Aim Key",Mode="Toggle"})
 SilentBox:AddToggle("silent_pred",{Text="Prediction",Default=false})
 SilentBox:AddToggle("silent_team",{Text="Team Check",Default=false})
 SilentBox:AddToggle("silent_dist",{Text="Distance Check",Default=false})
@@ -227,22 +227,18 @@ TriggerFOV:AddColorPicker("trigger_fov_color",{Title="Color",Default=Color3.from
 TriggerFOV:AddSlider("trigger_fov_sides",{Text="Num Sides",Min=3,Max=100,Default=14,Rounding=0})
 TriggerFOV:AddSlider("trigger_fov_thick",{Text="Thickness",Min=1,Max=10,Default=2,Rounding=0})
 
--- Full Player ESP UI (flags match DrawingLibrary expectations)
 local EspTab = Window:AddTab("ESP")
-
 local EspMain = EspTab:AddLeftGroupbox("Player ESP")
--- master toggles / filters
+
 EspMain:AddToggle("player_esp/Enabled", {Text="Enabled", Default=true})
 EspMain:AddToggle("player_esp/TeamCheck", {Text="Team Check", Default=false})
 EspMain:AddToggle("player_esp/TeamColor", {Text="Use Team Color", Default=true})
 EspMain:AddToggle("player_esp/DistanceCheck", {Text="Distance Check", Default=false})
 EspMain:AddSlider("player_esp/Distance", {Text="Max Distance", Min=25, Max=5000, Default=1000, Rounding=0, Suffix=" studs"})
 
--- ally/enemy palette used when TeamColor=false
 EspMain:AddColorPicker("player_esp/Ally",  {Title="Ally Color",  Default=Color3.fromRGB(85,170,255), Transparency=0.0})
 EspMain:AddColorPicker("player_esp/Enemy", {Title="Enemy Color", Default=Color3.fromRGB(255,170,255), Transparency=0.0})
 
--- BOX
 local BoxGb = EspTab:AddLeftGroupbox("Box")
 BoxGb:AddToggle("player_esp/Box/Enabled", {Text="Enabled", Default=true})
 BoxGb:AddToggle("player_esp/Box/Outline", {Text="Outline", Default=true})
@@ -252,7 +248,6 @@ BoxGb:AddSlider("player_esp/Box/CornerSize", {Text="Corner %", Min=0, Max=100, D
 BoxGb:AddSlider("player_esp/Box/Thickness", {Text="Thickness", Min=1, Max=6, Default=2, Rounding=0})
 BoxGb:AddSlider("player_esp/Box/Transparency", {Text="Transparency", Min=0, Max=1, Default=0.0, Rounding=2})
 
--- TRACER
 local TracerGb = EspTab:AddRightGroupbox("Tracer")
 TracerGb:AddToggle("player_esp/Tracer/Enabled", {Text="Enabled", Default=false})
 TracerGb:AddToggle("player_esp/Tracer/Outline", {Text="Outline", Default=true})
@@ -260,7 +255,6 @@ TracerGb:AddDropdown("player_esp/Tracer/Mode", {Text="From", Values={"From Mouse
 TracerGb:AddSlider("player_esp/Tracer/Thickness", {Text="Thickness", Min=1, Max=6, Default=2, Rounding=0})
 TracerGb:AddSlider("player_esp/Tracer/Transparency", {Text="Transparency", Min=0, Max=1, Default=0.0, Rounding=2})
 
--- HEAD DOT
 local HeadGb = EspTab:AddRightGroupbox("Head Dot")
 HeadGb:AddToggle("player_esp/HeadDot/Enabled", {Text="Enabled", Default=false})
 HeadGb:AddToggle("player_esp/HeadDot/Outline", {Text="Outline", Default=true})
@@ -271,7 +265,6 @@ HeadGb:AddSlider("player_esp/HeadDot/NumSides", {Text="Num Sides", Min=3, Max=64
 HeadGb:AddSlider("player_esp/HeadDot/Thickness", {Text="Thickness", Min=1, Max=6, Default=2, Rounding=0})
 HeadGb:AddSlider("player_esp/HeadDot/Transparency", {Text="Transparency", Min=0, Max=1, Default=0.0, Rounding=2})
 
--- OFFSCREEN ARROW
 local ArrowGb = EspTab:AddRightGroupbox("Offscreen Arrows")
 ArrowGb:AddToggle("player_esp/Arrow/Enabled", {Text="Enabled", Default=true})
 ArrowGb:AddToggle("player_esp/Arrow/Outline", {Text="Outline", Default=true})
@@ -282,7 +275,6 @@ ArrowGb:AddSlider("player_esp/Arrow/Width",  {Text="Width",  Min=6, Max=80, Defa
 ArrowGb:AddSlider("player_esp/Arrow/Thickness", {Text="Thickness", Min=1, Max=6, Default=2, Rounding=0})
 ArrowGb:AddSlider("player_esp/Arrow/Transparency", {Text="Transparency", Min=0, Max=1, Default=0.0, Rounding=2})
 
--- TEXT: Name
 local NameGb = EspTab:AddLeftGroupbox("Name")
 NameGb:AddToggle("player_esp/Name/Enabled", {Text="Enabled", Default=true})
 NameGb:AddToggle("player_esp/Name/Outline", {Text="Outline", Default=true})
@@ -290,7 +282,6 @@ NameGb:AddToggle("player_esp/Name/Autoscale", {Text="Autoscale", Default=true})
 NameGb:AddSlider("player_esp/Name/Size", {Text="Size", Min=10, Max=32, Default=14, Rounding=0})
 NameGb:AddSlider("player_esp/Name/Transparency", {Text="Transparency", Min=0, Max=1, Default=0.0, Rounding=2})
 
--- TEXT: Health %
 local HealthGb = EspTab:AddLeftGroupbox("Health Text")
 HealthGb:AddToggle("player_esp/Health/Enabled", {Text="Enabled", Default=false})
 HealthGb:AddToggle("player_esp/Health/Outline", {Text="Outline", Default=true})
@@ -298,7 +289,6 @@ HealthGb:AddToggle("player_esp/Health/Autoscale", {Text="Autoscale", Default=tru
 HealthGb:AddSlider("player_esp/Health/Size", {Text="Size", Min=10, Max=32, Default=12, Rounding=0})
 HealthGb:AddSlider("player_esp/Health/Transparency", {Text="Transparency", Min=0, Max=1, Default=0.0, Rounding=2})
 
--- TEXT: Distance
 local DistGb = EspTab:AddLeftGroupbox("Distance Text")
 DistGb:AddToggle("player_esp/Distance/Enabled", {Text="Enabled", Default=true})
 DistGb:AddToggle("player_esp/Distance/Outline", {Text="Outline", Default=true})
@@ -306,7 +296,6 @@ DistGb:AddToggle("player_esp/Distance/Autoscale", {Text="Autoscale", Default=tru
 DistGb:AddSlider("player_esp/Distance/Size", {Text="Size", Min=10, Max=32, Default=12, Rounding=0})
 DistGb:AddSlider("player_esp/Distance/Transparency", {Text="Transparency", Min=0, Max=1, Default=0.0, Rounding=2})
 
--- TEXT: Weapon
 local WeapGb = EspTab:AddLeftGroupbox("Weapon Text")
 WeapGb:AddToggle("player_esp/Weapon/Enabled", {Text="Enabled", Default=false})
 WeapGb:AddToggle("player_esp/Weapon/Outline", {Text="Outline", Default=true})
