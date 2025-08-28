@@ -507,7 +507,7 @@ function Drawing.Update(esp, target)
     esp.Drawing.Textboxes.Weapon.Visible = visible and get_flag(Flags, Flag, "/Weapon/Enabled") or false
 end
 
-function Drawing.SetupCursor(Window)
+--[[function Drawing.SetupCursor(Window)
     local Cursor = add_drawing("Image", {
         Size = V2(64,64)/1.5, Data = Testhook.Cursor, ZIndex = 3
     })
@@ -518,7 +518,7 @@ function Drawing.SetupCursor(Window)
             Cursor.Position = UserInputService:GetMouseLocation() - Cursor.Size/2
         end
     end)
-end
+end--]]
 
 function Drawing.SetupCrosshair(Flags)
     local L = add_drawing("Line",{Thickness=1.5,Transparency=1,Visible=false,ZIndex=2})
